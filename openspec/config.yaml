@@ -1,0 +1,37 @@
+schema: spec-driven
+
+context: |
+  Project: login_system
+  Architecture: Monorepo with 3 services + docker orchestration
+  Services:
+    - frontend: Next.js 14 + React 18 + TypeScript
+    - backend: Node.js + Express + mysql2 (layered: routes/controllers/services/repositories)
+    - llm_api: FastAPI + LiteLLM (streaming response)
+    - database: MySQL 8.4
+
+  Key request flows:
+    - Login flow: LoginForm.tsx -> api.ts -> next.config.js rewrite -> backend app/routes/controller/service/repository -> MySQL
+    - Chat flow: ChatPanel.tsx -> chatApi.ts -> next.config.js rewrite -> llm_api main.py -> litellm.acompletion(stream=True) -> StreamingResponse
+
+  Learning-oriented constraints:
+    - Prefer explanations from user-action perspective ("user clicks -> request -> response")
+    - Always include file relative paths
+    - Explain core terms in plain Chinese for beginners (rewrite, require, pool, mysql2/promise)
+
+rules:
+  proposal:
+    - Keep to 300-600 Chinese words and focus on "why now".
+    - Add a short "Non-goals" section.
+    - Capabilities must use kebab-case names.
+  design:
+    - "Must include two sections: 登录主线 and 聊天主线."
+    - "For each flow, list step-by-step file paths."
+    - "Avoid implementation noise unrelated to current change."
+  specs:
+    - Every requirement must include at least one Scenario in WHEN/THEN format.
+    - Use beginner-friendly wording while keeping SHALL/MUST semantics.
+    - Requirements should be testable and path-traceable.
+  tasks:
+    - Break tasks into small steps (15-60 min each).
+    - Include explicit verification action for each major task.
+    - Order tasks by dependency (route before service before repository, etc.).
