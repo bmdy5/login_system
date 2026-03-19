@@ -21,6 +21,7 @@ login_system/
 - LiteLLM 接入与代码解读：`docs/LiteLLM接入与代码解读.md`
 - 流式输出问题与解决：`docs/大模型流式输出问题与解决.md`
 - AI 生成项目审核官教程：`docs/AI生成项目审核官教程.md`
+- Git 与 Docker 实操笔记：`docs/Git与Docker实操笔记（login_system）.md`
 
 ## 3. 环境准备
 
